@@ -44,6 +44,7 @@ coverage.xml
 *.py,cover
 
 # Flask / instance folder
+instance/
 .webassets-cache
 
 # Database files
@@ -52,7 +53,9 @@ coverage.xml
 database.db
 
 # Uploaded media and generated thumbnails (keep .gitkeep placeholders)
+uploads/
 !uploads/.gitkeep
+thumbnails/
 !thumbnails/.gitkeep
 
 # Logs and runtime files
