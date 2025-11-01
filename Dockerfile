@@ -7,10 +7,7 @@ RUN apt-get update && apt-get install -y \
     libxext6 \
     libxrender-dev \
     libgomp1 \
-    libgl1-mesa-glx \
-    libxrender1 \
-    libfontconfig1 \
-    libice6 \
+    libgl1 \
     ffmpeg \
     && rm -rf /var/lib/apt/lists/*
 
