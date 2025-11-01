@@ -44,7 +44,7 @@ coverage.xml
 *.py,cover
 
 # Flask / instance folder
-instance/
+# instance/
 .webassets-cache
 
 # Database files
