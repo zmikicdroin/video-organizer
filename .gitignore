@@ -53,9 +53,9 @@ coverage.xml
 database.db
 
 # Uploaded media and generated thumbnails (keep .gitkeep placeholders)
-uploads/*
+# uploads/*
 !uploads/.gitkeep
-thumbnails/*
+# thumbnails/*
 !thumbnails/.gitkeep
 
 # Logs and runtime files
