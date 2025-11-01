@@ -1,31 +1,24 @@
-FROM python:3.11-slim
+FROM python:3.8-slim
 
-# Install system dependencies for OpenCV
+# Install OpenCV dependencies
 RUN apt-get update && apt-get install -y \
-    libglib2.0-0 \
-    libsm6 \
-    libxext6 \
-    libxrender-dev \
-    libgomp1 \
-    ffmpeg \
+    libgl1-mesa-glx \
+    libxrender1 \
+    libfontconfig1 \
+    libice6 \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /app
+# Set permissions for directories
+RUN chmod -R 777 /path/to/uploads /path/to/thumbnails /path/to/instance
 
-# Copy requirements and install Python dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Set working directory
+WORKDIR /app
 
 # Copy application files
 COPY . .
 
-# Create necessary directories
-RUN mkdir -p uploads thumbnails instance
+# Install Python dependencies
+RUN pip install -r requirements.txt
 
-# Expose port
-EXPOSE 5000
-
-# Run the application with gunicorn for production
-RUN pip install gunicorn
-
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "4", "--timeout", "300", "app:app"]
+# Command to run the application
+CMD gunicorn --access-logfile "-" --error-logfile "-" myapp:app
